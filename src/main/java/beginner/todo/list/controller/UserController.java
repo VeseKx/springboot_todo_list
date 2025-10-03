@@ -1,57 +1,44 @@
 package beginner.todo.list.controller;
 
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import beginner.todo.list.repository.UserRepository;
+import beginner.todo.list.model.User;
 import java.util.List;
 
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-import beginner.todo.list.model.User;
-import beginner.todo.list.repository.UserRepository;
-
-
-
 @RestController
-@RequestMapping("/users")
 public class UserController {
-    private final UserRepository userRepository;
+    private UserRepository UserRepository;
 
-    public UserController(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public UserController(UserRepository repo){
+        this.UserRepository = repo;
     }
 
-    @GetMapping
-    public List<User> getUsers() {
-        return userRepository.findAll();
-    }
-    
-    @PostMapping
-    public User addUser(@RequestBody User newUser) {
-        if (newUser.getHabits().size() > 0)
-            newUser.getHabits().forEach(habit -> {
-                habit.setUser(newUser);
-
-                if (habit.getCompletions() != null)
-                    habit.getCompletions().forEach(completion -> completion.setHabit(habit));
-            });
-
-        return userRepository.save(newUser);
+    @GetMapping("/users")
+    List<User> getUsers() {
+        return UserRepository.findAll();
     }
 
-    @DeleteMapping
-    public ResponseEntity<Void> deleteUser(@RequestBody User user) {
-        User usrDel = null;
-
-        if (user.getId() != null)
-            usrDel = userRepository.findById(user.getId()).get();
-        else if (user.getUsername() != null)
-            usrDel = userRepository.findByUsername(user.getUsername());
-        else if (user.getEmail() != null)
-            usrDel = userRepository.findByEmail(user.getEmail());
-
-        if (usrDel == null)
-            return ResponseEntity.notFound().build();
-
-        userRepository.delete(usrDel);
-        return ResponseEntity.noContent().build();
+    @PostMapping("/users")
+    String addUser(@RequestBody User user) {
+        if (user.getUsername() != null && user.getEmail() != null){
+            UserRepository.save(user);
+            return "Value savede saccessfully";
+        }
+        return "ERRORER: Username or email is null"; 
     }
-    
+
+    @DeleteMapping("/user/{id}")
+    String deleteUser(@PathVariable Long id) {
+        if (UserRepository.existsById(id)){
+            UserRepository.deleteById(id);
+            return "User deleted successfully";
+        }
+        return "ERROR: User with id " + id + " does not exist";
+    }
 }

@@ -117,3 +117,30 @@ DELETE * FROM HABITS [42001-232]
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "UPDATE COMPLETIONS\000d\000aSET [*]null = 1"; expected "identifier"; SQL statement:
 UPDATE COMPLETIONS
 SET null = 1 [42001-232]
+2025-10-03 10:57:49.728901+02:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "DELETE [*]* FROM USERS"; expected "identifier"; SQL statement:
+DELETE * FROM USERS [42001-232]
+2025-10-03 11:49:29.969002+02:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]REMOVE * USERS"; expected "ROLLBACK, REVOKE, RUNSCRIPT, RELEASE, REFRESH"; SQL statement:
+REMOVE * USERS [42001-232]
+2025-10-03 11:49:30.878087+02:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]REMOVE * USERS"; expected "ROLLBACK, REVOKE, RUNSCRIPT, RELEASE, REFRESH"; SQL statement:
+REMOVE * USERS [42001-232]
+2025-10-03 11:49:42.256297+02:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]REMOVE FROM USERS"; expected "ROLLBACK, REVOKE, RUNSCRIPT, RELEASE, REFRESH"; SQL statement:
+REMOVE FROM USERS [42001-232]
+2025-10-03 11:49:43.250801+02:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]REMOVE FROM USERS"; expected "ROLLBACK, REVOKE, RUNSCRIPT, RELEASE, REFRESH"; SQL statement:
+REMOVE FROM USERS [42001-232]
+2025-10-03 11:50:01.159789+02:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]REMOVE FROM COMPLETIONS"; expected "ROLLBACK, REVOKE, RUNSCRIPT, RELEASE, REFRESH"; SQL statement:
+REMOVE FROM COMPLETIONS [42001-232]
+2025-10-03 11:50:22.414423+02:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]DELATE FROM COMPLETIONS"; expected "DELETE, DROP"; SQL statement:
+DELATE FROM COMPLETIONS [42001-232]
+2025-10-03 11:50:23.390345+02:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]DELATE FROM COMPLETIONS"; expected "DELETE, DROP"; SQL statement:
+DELATE FROM COMPLETIONS [42001-232]
+2025-10-03 11:50:32.621554+02:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]DELATE FROM USERS"; expected "DELETE, DROP"; SQL statement:
+DELATE FROM USERS [42001-232]
