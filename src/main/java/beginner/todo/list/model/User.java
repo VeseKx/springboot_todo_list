@@ -16,6 +16,8 @@ public class User {
 
     private String email;
 
+    private String password;
+
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
     private List<Habit> habits;
@@ -31,4 +33,7 @@ public class User {
 
     public List<Habit> getHabits() { return habits; }
     public void setHabits(List<Habit> habits) { this.habits = habits; }
+
+    public String getPassword() { return password; }
+    public void setPassword(String password) { this.password = password; }
 }
