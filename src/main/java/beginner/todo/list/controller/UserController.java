@@ -26,7 +26,10 @@ public class UserController {
 
     @PostMapping("/users")
     String addUser(@RequestBody User user) {
-        if (user.getUsername() != null && user.getEmail() != null){
+        if (UserRepository.existsByUsername(user.getUsername())) {
+            return "ERROR: Username is already taken!";
+        }
+        else if (user.getUsername() != null && user.getEmail() != null){
             UserRepository.save(user);
             return "Value savede saccessfully";
         }
